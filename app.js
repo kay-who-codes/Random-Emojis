@@ -35,6 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         card.appendChild(emojiElement);
         card.appendChild(nameElement);
+
+        // Add click event to copy emoji to clipboard
+        card.addEventListener('click', (e) => {
+            // Add click animation
+            card.classList.add('click-animation');
+            setTimeout(() => {
+                card.classList.remove('click-animation');
+            }, 300);
+
+            copyToClipboard(emoji);
+        });
+
         return card;
     }
 
@@ -59,20 +71,33 @@ document.addEventListener('DOMContentLoaded', () => {
     generateEmojis();
 });
 
+// Function to copy text to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showCopyNotification(text); // Pass the emoji to the notification function
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+}
+
+// Show in-app notification with the emoji
+function showCopyNotification(emoji) {
+    const notification = document.getElementById('copyNotification');
+    notification.textContent = `${emoji} Copied to Clipboard!`; // Prepend the emoji to the message
+    notification.classList.add('show');
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 2000);
+}
+
 // Play Sound When Clicking Button
-const VARIABLE_FOR_NAME_OF_SOUND_GOES_HERE = new Audio('click.mp3'); // Create an Audio object
+const buttonSound = new Audio('click.mp3'); // Create an Audio object
 
 // Function to play the sound
-function playVARIABLE_FOR_NAME_OF_SOUND_GOES_HERE() {
-  VARIABLE_FOR_NAME_OF_SOUND_GOES_HERE.play();
+function playButtonSound() {
+    buttonSound.play();
 }
 
 // Add event listeners to buttons
-document.getElementById('generateBtn').addEventListener('click', playVARIABLE_FOR_NAME_OF_SOUND_GOES_HERE);
-
-
-fetch("https://kay-who-codes.github.io/Kay-App-Assets/Footer.html")
-    .then(response => response.text())
-    .then(data => {
-        document.body.insertAdjacentHTML('beforeend', data);
-    });
+document.getElementById('generateBtn').addEventListener('click', playButtonSound);
+document.getElementById('emojiContainer').addEventListener('click', playButtonSound);

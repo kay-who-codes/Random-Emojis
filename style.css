@@ -83,6 +83,7 @@ button:active {
 }
 
 .emoji-card {
+    cursor: pointer;
     background-color: var(--card-bg);
     padding: 1.5rem;
     border-radius: 12px;
@@ -91,13 +92,59 @@ button:active {
 }
 
 .emoji-card:hover {
-    transform: translateY(-5px);
+    background-color: #3a3a3a;
+}
+
+.emoji-card:active {
+    transform: scale(0.95);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.copy-notification {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #004b929a;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 5000;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.copy-notification.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Add click animation */
+@keyframes clickEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.click-animation {
+    animation: clickEffect 0.3s ease;
 }
 
 .emoji {
     font-size: 3rem;
     display: block;
     margin-bottom: 0.5rem;
+    
 }
 
 .emoji-name {
