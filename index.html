@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⁉️ Random Emojis</title>
+<!-- Linking multiple CSS files -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css">
+</head>
+<body>
+<!-- Header Bar -->
+<div id="header"></div>
+
+<!-- Main Content -->
+    <div class="container">
+        <h1>Random Emojis</h1>
+        <div class="controls">
+            <input type="number" id="emojiCount" value="3" min="1" max="100">
+            <button id="generateBtn">Generate Emojis</button>
+        </div>
+        <div id="emojiContainer" class="emoji-grid"></div>
+    </div>
+<!-- Footer Bar -->
+<div id="footer"></div>
+
+<!-- JS files -->
+    <script src="app.js" defer></script>
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script>
+</body>
+</html>
