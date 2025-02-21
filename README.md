@@ -1,4 +1,4 @@
-# Random Emoji Generator
+# ⁉️ Random Emoji Generator
 
 A minimalistic dark-mode web app that randomly generates emojis and displays them in a clean, responsive layout. Users can specify how many emojis they want to generate, and the app fetches emoji data from a JSON file to display both the emoji and its name.
 
